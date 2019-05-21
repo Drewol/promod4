@@ -113,7 +113,7 @@ onPlayerConnect()
 
 setClassChoice( classType )
 {
-	if( classType != "assault" && classType != "specops" && classType != "demolitions" && classType != "sniper" )
+	if( classType != "r700" && classType != "m40" )
 		return;
 
 	idef = !isDefined(self.pers["class"]);
@@ -124,44 +124,10 @@ setClassChoice( classType )
 	if(idef)
 		self promod\shoutcast::addPlayer();
 
-	self setClientDvar( "loadout_class", classType );
+	self setClientDvar( "loadout_class", "sniper" );
 
 	self initClassLoadouts();
-	self setDvarsFromClass( classType );
-
-	switch ( classType )
-	{
-		case "assault":
-			self setClientDvars(
-					"weap_allow_m16", getDvar( "weap_allow_m16" ),
-					"weap_allow_ak47", getDvar( "weap_allow_ak47" ),
-					"weap_allow_m4", getDvar( "weap_allow_m4" ),
-					"weap_allow_g3", getDvar( "weap_allow_g3" ),
-					"weap_allow_g36c", getDvar( "weap_allow_g36c" ),
-					"weap_allow_m14", getDvar( "weap_allow_m14" ),
-					"weap_allow_mp44", getDvar( "weap_allow_mp44" ),
-					"attach_allow_assault_none", getDvar( "attach_allow_assault_none" ),
-					"attach_allow_assault_silencer", getDvar( "attach_allow_assault_silencer" ) );
-			break;
-		case "specops":
-			self setClientDvars(
-					"weap_allow_mp5", getDvar( "weap_allow_mp5" ),
-					"weap_allow_uzi", getDvar( "weap_allow_uzi" ),
-					"weap_allow_ak74u", getDvar( "weap_allow_ak74u" ),
-					"attach_allow_specops_none", getDvar( "attach_allow_specops_none" ),
-					"attach_allow_specops_silencer", getDvar( "attach_allow_specops_silencer" ) );
-			break;
-		case "demolitions":
-			self setClientDvars(
-					"weap_allow_m1014", getDvar( "weap_allow_m1014" ),
-					"weap_allow_winchester1200", getDvar( "weap_allow_winchester1200" ) );
-			break;
-		case "sniper":
-			self setClientDvars(
-					"weap_allow_m40a3", getDvar( "weap_allow_m40a3" ),
-					"weap_allow_remington700", getDvar( "weap_allow_remington700" ) );
-			break;
-	}
+	self setDvarsFromClass( "sniper" );
 
 	thread updateClassAvailability( self.pers["team"] );
 }
@@ -588,9 +554,6 @@ menuAcceptClass( response )
 	else
 	{
 		self setClientDvar( "loadout_curclass", self.pers["class"] );
-
-		if ( isDefined( response) && response == "go" )
-			self thread maps\mp\gametypes\_class::preserveClass( self.pers["class"] );
 
 		if ( isDefined( game["state"] ) && game["state"] == "postgame" )
 			return;

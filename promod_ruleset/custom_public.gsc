@@ -72,10 +72,10 @@ main()
 	setDvar( "scr_dm_waverespawndelay", 0 ); // [0->] (seconds)
 
 	// class limits
-	setDvar( "class_assault_limit", 64 );
-	setDvar( "class_specops_limit", 2 );
-	setDvar( "class_demolitions_limit", 1 );
-	setDvar( "class_sniper_limit", 1 );
+	setDvar( "class_assault_limit", 0 );
+	setDvar( "class_specops_limit", 0 );
+	setDvar( "class_demolitions_limit", 0 );
+	setDvar( "class_sniper_limit", 50 );
 
 	setDvar( "class_assault_allowdrop", 1 );
 	setDvar( "class_specops_allowdrop", 1 );
@@ -113,20 +113,20 @@ main()
 	setDvar( "weap_allow_remington700", 1 );
 
 	// pistol
-	setDvar( "weap_allow_beretta", 1 );
-	setDvar( "weap_allow_colt45", 1 );
-	setDvar( "weap_allow_usp", 1 );
-	setDvar( "weap_allow_deserteagle", 1 );
-	setDvar( "weap_allow_deserteaglegold", 1 );
+	setDvar( "weap_allow_beretta", 0 );
+	setDvar( "weap_allow_colt45", 0 );
+	setDvar( "weap_allow_usp", 0 );
+	setDvar( "weap_allow_deserteagle", 0 );
+	setDvar( "weap_allow_deserteaglegold", 0 );
 
 	// pistol attachments
 	setDvar( "attach_allow_pistol_none", 1 );
 	setDvar( "attach_allow_pistol_silencer", 1 );
 
 	// grenades
-	setDvar( "weap_allow_flash_grenade", 1 );
-	setDvar( "weap_allow_frag_grenade", 1 );
-	setDvar( "weap_allow_smoke_grenade", 1 );
+	setDvar( "weap_allow_flash_grenade", 0 );
+	setDvar( "weap_allow_frag_grenade", 0 );
+	setDvar( "weap_allow_smoke_grenade", 0 );
 
 	// assault class default loadout (preserved)
 	setDvar( "class_assault_primary", "ak47" );
@@ -157,7 +157,7 @@ main()
 	setDvar( "class_sniper_primary_attachment", "none" );
 	setDvar( "class_sniper_secondary", "deserteagle" );
 	setDvar( "class_sniper_secondary_attachment", "none" );
-	setDvar( "class_sniper_grenade", "smoke_grenade" );
+	setDvar( "class_sniper_grenade", "none" );
 	setDvar( "class_sniper_camo", "camo_none" );
 
 	// team killing
@@ -200,8 +200,8 @@ main()
 	// various
 	setDvar( "g_allowVote", 0 ); // [0-1]
 	setDvar( "g_deadChat", 1 ); // [0-1]
-	setDvar( "scr_game_allowkillcam", 0 ); // [0-1]
-	setDvar( "scr_game_spectatetype", 1 ); // [0-2] (disabled, team only, all)
+	setDvar( "scr_game_allowkillcam", 1 ); // [0-1]
+	setDvar( "scr_game_spectatetype", 2 ); // [0-2] (disabled, team only, all)
 	setDvar( "scr_game_matchstarttime", 10 ); // [0->] (seconds)
 	setDvar( "scr_enable_hiticon", 2 ); // [0-2] (disabled, hit icon on, hit icon on but not through walls)
 	setDvar( "scr_enable_scoretext", 1 ); // [0-1] (exp popups, +5 etc)

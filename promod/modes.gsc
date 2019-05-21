@@ -145,7 +145,7 @@ setMode( mode )
 	game["PROMOD_STRATTIME"] = 6;
 	game["PROMOD_MODE_HUD"] = "";
 	game["PROMOD_MATCH_MODE"] = "";
-	game["PROMOD_PB_OFF"] = 0;
+	game["PROMOD_PB_OFF"] = 1;
 	game["PROMOD_KNIFEROUND"] = 0;
 	game["SCORES_ATTACK"] = 0;
 	game["SCORES_DEFENCE"] = 0;
@@ -155,6 +155,7 @@ setMode( mode )
 		promod\comp::main();
 		game["PROMOD_MATCH_MODE"] = "pub";
 		game["PROMOD_MODE_HUD"] = "^4Competitive ^3Public";
+		game["PROMOD_PB_OFF"] = 1;
 		pub();
 	}
 	else if ( mode == "comp_public_hc" )

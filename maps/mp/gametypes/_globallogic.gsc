@@ -2188,7 +2188,7 @@ startGame()
 		return;
 	}
 	else if ( isDefined( game["PROMOD_MATCH_MODE"] ) && game["PROMOD_MATCH_MODE"] == "match" )
-		setDvar( "g_deadChat", 0 );
+		setDvar( "g_deadChat", 1 );
 
 	if ( isDefined( level.timeout_over ) && !level.timeout_over )
 		return;

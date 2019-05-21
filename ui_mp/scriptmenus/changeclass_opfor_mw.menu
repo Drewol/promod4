@@ -82,24 +82,13 @@
 		#include "ui_mp/navcontrols.inc"
 		#include "ui_mp/teamicon.inc"
 
-		CHOICE_BUTTON_VIS( 1, "1. Assault", scriptMenuResponse "assault";, when( dvarBool( axis_allow_assault ) || dvarString( loadout_curclass ) == "assault" ) )
-		CHOICE_DBUTTON_VIS( 1, "1. Assault", when( !dvarBool( axis_allow_assault ) && dvarString( loadout_curclass ) != "assault" ) )
+		CHOICE_BUTTON( 2, "1. M40A3", scriptMenuResponse "m40"; )
+		CHOICE_BUTTON( 3, "2. R700", scriptMenuResponse "r700"; )
 
-		CHOICE_BUTTON_VIS( 2, "2. Spec Ops", scriptMenuResponse "specops";, when( dvarBool( axis_allow_specops ) || dvarString( loadout_curclass ) == "specops" ) )
-		CHOICE_DBUTTON_VIS( 2, "2. Spec Ops", when( !dvarBool( axis_allow_specops ) && dvarString( loadout_curclass ) != "specops" ) )
+		CHOICE_BUTTON( 5, "3. Spectate Team", scriptMenuResponse "killspec"; )
 
-		CHOICE_BUTTON_VIS( 3, "3. Demolitions", scriptMenuResponse "demolitions";, when( dvarBool( axis_allow_demolitions ) || dvarString( loadout_curclass ) == "demolitions" ) )
-		CHOICE_DBUTTON_VIS( 3, "3. Demolitions", when( !dvarBool( axis_allow_demolitions ) && dvarString( loadout_curclass ) != "demolitions" ) )
-
-		CHOICE_BUTTON_VIS( 4, "4. Sniper", scriptMenuResponse "sniper";, when( dvarBool( axis_allow_sniper ) || dvarString( loadout_curclass ) == "sniper" ) )
-		CHOICE_DBUTTON_VIS( 4, "4. Sniper", when( !dvarBool( axis_allow_sniper ) && dvarString( loadout_curclass ) != "sniper" ) )
-
-		CHOICE_BUTTON( 6, "5. Spectate Team", scriptMenuResponse "killspec"; )
-
-		execKey "1" { scriptMenuResponse "assault"; }
-		execKey "2" { scriptMenuResponse "specops"; }
-		execKey "3" { scriptMenuResponse "demolitions"; }
-		execKey "4" { scriptMenuResponse "sniper"; }
-		execKey "5" { scriptMenuResponse "killspec"; }
+		execKey "1" { scriptMenuResponse "m40"; }
+		execKey "2" { scriptMenuResponse "r700"; }
+		execKey "3" { scriptMenuResponse "killspec"; }
 	}
 }

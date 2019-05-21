@@ -15,122 +15,34 @@ giveLoadout( team, class )
 	self setClientDvar( "loadout_curclass", class );
 	self.curClass = class;
 
-	sidearmWeapon();
 	primaryWeapon();
-
-	if(getDvarInt("weap_allow_frag_grenade") && (!isDefined( level.strat_over ) || level.strat_over))
-	{
-		s = "";
-		if ( level.hardcoreMode )
-			s = "_short";
-		self giveWeapon( "frag_grenade"+s+"_mp" );
-		self setWeaponAmmoClip( "frag_grenade"+s+"_mp", 1 );
-		self switchToOffhand( "frag_grenade"+s+"_mp" );
-	}
-
-	gren = self.pers[class]["loadout_grenade"];
-	if((gren == "flash_grenade" || gren == "smoke_grenade") && getDvarInt("weap_allow_"+gren))
-	{
-		self setOffhandSecondaryClass(GetSubStr(gren, 0, 5));
-		if(!isDefined(level.strat_over) || level.strat_over)
-		{
-			self giveWeapon(gren+"_mp");
-			self setWeaponAmmoClip(gren+"_mp", 1);
-		}
-	}
-
+	self maps\mp\gametypes\_teams::playerModelForWeapon("m40a3");
 	self setMoveSpeedScale( ( 1.0 - 0.05 * int( class == "assault" ) ) * !int( isDefined( level.strat_over ) && !level.strat_over ) );
 }
 
 sidearmWeapon()
 {
-	class = self.pers["class"];
-	sidearmWeapon = self.pers[class]["loadout_secondary"];
-
-	if ( sidearmWeapon != "none" && sidearmWeapon != "deserteaglegold" && sidearmWeapon != "deserteagle" && sidearmWeapon != "colt45" && sidearmWeapon != "usp" && sidearmWeapon != "beretta" )
-		sidearmWeapon = getDvar( "class_" + class + "_secondary" );
-
-	if ( sideArmWeapon != "none" )
-	{
-		s = "";
-		if ( self.pers[class]["loadout_secondary_attachment"] == "silencer" )
-			s = "_silencer";
-		else
-			self.pers[class]["loadout_secondary_attachment"] = "none";
-
-		sidearmWeapon += s+"_mp";
-
-		if ( isDefined( level.strat_over ) && level.strat_over && ( !isDefined( game["PROMOD_KNIFEROUND"] ) || !game["PROMOD_KNIFEROUND"] ) || !isDefined( level.strat_over ) )
-		{
-			self giveWeapon( sidearmWeapon );
-			self giveMaxAmmo( sidearmWeapon );
-		}
-	}
 }
 
 primaryWeapon()
 {
 	class = self.pers["class"];
-	primaryWeapon = self.pers[class]["loadout_primary"];
-
-	switch(primaryWeapon)
+	self setPerk("specialty_fastreload");
+	if(class == "m40")
 	{
-		case "none":
-		case "m16":
-		case "ak47":
-		case "m4":
-		case "g3":
-		case "g36c":
-		case "m14":
-		case "mp44":
-		case "mp5":
-		case "uzi":
-		case "ak74u":
-		case "winchester1200":
-		case "m1014":
-		case "m40a3":
-		case "remington700":
-			break;
-		default:
-			primaryWeapon = getDvar("class_"+class+"_primary");
-	}
-
-	camos = strtok("camo_brockhaurd|camo_bushdweller|camo_blackwhitemarpat|camo_tigerred|camo_stagger", "|");
-	camonum = 0;
-
-	if(isDefined(self.pers[class]["loadout_camo"]))
-	{
-		for(i=0;i<camos.size;i++)
-			if(self.pers[class]["loadout_camo"] == camos[i])
-			{
-				camonum = i+1;
-				break;
-			}
-
-		if(self.pers[class]["loadout_camo"] == "camo_gold" && (primaryWeapon == "ak47" || primaryWeapon == "uzi" || primaryWeapon == "m1014"))
-			camonum = 6;
+		self giveWeapon("remington700_mp", 0);
+		self giveWeapon("m40a3_mp", 0);
+		self setSpawnWeapon("m40a3_mp");
+		self giveMaxAmmo("m40a3_mp");
+		self giveMaxAmmo("remington700_mp");
 	}
 	else
-		self.pers[class]["loadout_camo"] = "camo_none";
-
-	if(primaryWeapon != "none")
 	{
-		s = "";
-		if(self.pers[class]["loadout_primary_attachment"] == "silencer")
-			s = "_silencer";
-		else
-			self.pers[class]["loadout_primary_attachment"] = "none";
-
-		primaryWeapon += s+"_mp";
-
-		self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers[class]["loadout_primary"] );
-
-		if ( isDefined( level.strat_over ) && level.strat_over && ( !isDefined( game["PROMOD_KNIFEROUND"] ) || !game["PROMOD_KNIFEROUND"] ) || !isDefined( level.strat_over ) )
-		{
-			self giveWeapon( primaryWeapon, camonum );
-			self setSpawnWeapon( primaryWeapon );
-			self giveMaxAmmo( primaryWeapon );
-		}
+		self giveWeapon("remington700_mp", 0);
+		self giveWeapon("m40a3_mp", 0);
+		self setSpawnWeapon("remington700_mp");
+		self giveMaxAmmo("m40a3_mp");
+		self giveMaxAmmo("remington700_mp");
 	}
 }
 

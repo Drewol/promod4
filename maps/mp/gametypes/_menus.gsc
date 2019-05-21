@@ -176,14 +176,14 @@ onMenuResponse()
 					self [[level.killspec]]();
 					continue;
 				}
-
-				if ( maps\mp\gametypes\_quickmessages::chooseClassName( response ) == "" || !self maps\mp\gametypes\_promod::verifyClassChoice( self.pers["team"], response ) )
-					continue;
+				//if ( maps\mp\gametypes\_quickmessages::chooseClassName( response ) == "" || !self maps\mp\gametypes\_promod::verifyClassChoice( self.pers["team"], response ) )
+				//	continue;
 
 				self maps\mp\gametypes\_promod::setClassChoice( response );
+				self maps\mp\gametypes\_promod::menuAcceptClass( "go" );
 				self closeMenu();
 				self closeInGameMenu();
-				self openMenu( game["menu_changeclass"] );
+				//self openMenu( game["menu_changeclass"] );
 				continue;
 
 			case "changeclass_mw":

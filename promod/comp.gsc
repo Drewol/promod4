@@ -72,15 +72,15 @@ main()
 	setDvar( "scr_dm_timelimit", 10 );
 	setDvar( "scr_dm_waverespawndelay", 0 );
 
-	setDvar( "class_assault_limit", 64 );
-	setDvar( "class_specops_limit", 2 );
-	setDvar( "class_demolitions_limit", 1 );
-	setDvar( "class_sniper_limit", 1 );
+	setDvar( "class_assault_limit", 0 );
+	setDvar( "class_specops_limit", 0 );
+	setDvar( "class_demolitions_limit", 0 );
+	setDvar( "class_sniper_limit", 64 );
 
 	setDvar( "class_assault_allowdrop", 1 );
 	setDvar( "class_specops_allowdrop", 1 );
-	setDvar( "class_demolitions_allowdrop", 0 );
-	setDvar( "class_sniper_allowdrop", 0 );
+	setDvar( "class_demolitions_allowdrop", 1 );
+	setDvar( "class_sniper_allowdrop", 1 );
 
 	setDvar( "weap_allow_m16", 1 );
 	setDvar( "weap_allow_ak47", 1 );
@@ -183,7 +183,8 @@ main()
 	setDvar( "timescale", 1 );
 
 	setDvar( "g_allowVote", 0 );
-	setDvar( "scr_game_allowkillcam", 0 );
+	setDvar( "scr_game_allowkillcam", 1 );
 	setDvar( "scr_game_spectatetype", 1 );
 	setDvar( "scr_hardcore", 0 );
+	setDvar( "player_meleeRange", 0 );
 }
